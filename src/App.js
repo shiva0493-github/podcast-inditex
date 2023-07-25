@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router";
+import { useState, useEffect } from "react";
+
+// API CALL
+import { getPodcasts } from "./services";
+
+// Pages Desktop
+import Homepage from "./pages/Homepage";
+import PodcastDetail from "./pages/PodcastDetail";
+import EpisodeDetail from "./pages/EpisodeDetail";
 
 function App() {
+
+  const [podcasts, setPodcasts] = useState([])
+  
+  useEffect(() => {
+    async function fetchData(){
+      const response = await getPodcasts()
+      setPodcasts(response)
+    }
+    fetchData()
+  },[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Homepage podcasts={podcasts} />}  />
+        <Route path="/podcast/:podcastId" element={<PodcastDetail />}  />
+        <Route path="/podcast/:podcastId/episode/:episodeId" element={<EpisodeDetail />}  />
+      </Routes>
     </div>
   );
 }

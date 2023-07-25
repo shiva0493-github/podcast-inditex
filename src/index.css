@@ -5,9 +5,50 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 2vh 5vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.shadow {
+  box-shadow: 0px 2px 10px 1px grey;
+}
+
+.shadow:hover {
+  box-shadow: 0px 2px 10px 1px black;
+}
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+.episdodeTitle {
+  color:#70879e; 
+  font-size:2vh; 
+  padding:1vh 0vh;
+}
+
+.episdodeTitle:hover {
+  color:white;
+}
+
+.highlighter:hover{
+    cursor: pointer;
+    background-color:  #70879e;
+    color:white;
+}
+
+.episodeHover:hover{
+  cursor: pointer;
+  background-color: #f3f3f3;
+
+}
+
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
 }
